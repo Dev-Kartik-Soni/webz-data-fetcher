@@ -10,6 +10,7 @@ A TypeScript service that fetches data from the Webz.io API and stores it in Pos
 - Includes unit tests with Jest
 - Uses Docker Compose for easy database setup
 - Implements proper logging with Winston
+- Uses Swagger for API documentation
 
 ## Setup
 
