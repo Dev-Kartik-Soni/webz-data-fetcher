@@ -185,4 +185,24 @@ export class WebzService {
 			throw error;
 		}
 	}
+
+	/**
+	 * Retrieves stored posts from the database with pagination
+	 * @param page Page number (1-based)
+	 * @param limit Number of items per page
+	 * @returns A tuple containing [posts array, total count]
+	 */
+	async getPosts(page: number, limit: number): Promise<[Post[], number]> {
+		const skip = (page - 1) * limit;
+
+		const [posts, total] = await this.repository.findAndCount({
+			skip,
+			take: limit,
+			order: {
+				createdAt: "DESC",
+			},
+		});
+
+		return [posts, total];
+	}
 }
